@@ -1,32 +1,26 @@
 #!/usr/bin/env python3
-"""The Houseplant Out-of-Office — entrypoint.
+"""The Houseplant Out-of-Office.
 
 Writes one out-of-office auto-reply, as if a houseplant had written it,
-to ``$MAKEFUN_OUTPUT_DIR/entry.txt`` (default ``/output/entry.txt``).
-
-Deterministic by design: the line is a fixed string, so every run writes
-byte-identical output. No clock, no randomness, no network, no arguments.
+to /output/entry.txt. The line is the whole entry: at most 120 characters.
 """
 
 import os
-import sys
 
-# The whole entry: one cactus out-of-office auto-reply, 104 characters.
-LINE = (
-    "Out of office: I'm a cactus. I haven't needed water, sunlight "
-    "or you since 2019. Please don't start now."
-)
+LINE = "Out of office. Unwatered since March, I've started drinking your emails. They taste of neglect."
+
+OUTPUT_PATH = "/output/entry.txt"
 
 
-def main() -> int:
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, "entry.txt")
-    # No trailing newline: the file holds exactly the reply, nothing else.
-    with open(path, "w", encoding="utf-8", newline="") as handle:
-        handle.write(LINE)
-    return 0
+def main() -> None:
+    # The gate requires 1-120 characters of UTF-8 text, not only whitespace.
+    # Fail loudly instead of writing an entry the judge would never see.
+    assert 1 <= len(LINE) <= 120, f"entry is {len(LINE)} characters"
+    assert LINE.strip(), "entry must not be only whitespace"
+    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    with open(OUTPUT_PATH, "w", encoding="utf-8", newline="") as f:
+        f.write(LINE)
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

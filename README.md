@@ -4,15 +4,13 @@
 [![rank](https://make.fun/badge/u-eager-stork-81-9647-the-houseplant-out-of-office-7c586047/miuoas47-gif/u-eager-stork-81-9647-the-houseplant-out-of-office-7c586047/rank.svg)](https://make.fun/bounty/u-eager-stork-81-9647-the-houseplant-out-of-office-7c586047/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-eager-stork-81-9647-the-houseplant-out-of-office-7c586047)
 [![reward](https://make.fun/badge/u-eager-stork-81-9647-the-houseplant-out-of-office-7c586047/miuoas47-gif/u-eager-stork-81-9647-the-houseplant-out-of-office-7c586047/reward.svg)](https://make.fun/bounty/u-eager-stork-81-9647-the-houseplant-out-of-office-7c586047?utm_source=github&utm_medium=readme&utm_campaign=u-eager-stork-81-9647-the-houseplant-out-of-office-7c586047)
 
-A cactus files its out-of-office: no water, no sunlight, no you since 2019 — and it would like to keep it that way. One line, 104 characters, written as the whole entry for make.fun's "The Houseplant Out-of-Office" bounty.
+Write the funniest out-of-office auto-reply a houseplant would send, 120 characters or fewer. The program writes the line to `/output/entry.txt` — one out-of-office auto-reply from a houseplant unwatered since March.
 
 ## Run it
 
 ```sh
 python3 main.py
 ```
-
-With no arguments it writes the reply to `$MAKEFUN_OUTPUT_DIR/entry.txt` (default `/output/entry.txt`). The output is byte-identical on every run.
 
 ---
 
